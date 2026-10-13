@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Round_Monogram_Left';
+    src: url('BlackoakStd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Round_Monogram_Right';
+    src: url('BlackoakStd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Round_Monogram_Center';
+    src: url('BlackoakStd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BlackoakStd';
+    src: url('BlackoakStd.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabriola';
+    src: url('Gabriola.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.Round_Monogram_Left {
+    font-family: 'Round_Monogram_Left';
+    font-size: 60px;
+}
+.Round_Monogram_Center {
+    font-family: 'Round_Monogram_Center';
+    font-size: 60px;
+}
+.Round_Monogram_Right {
+    font-family: 'Round_Monogram_Right';
+    font-size: 60px;
+}
+.BlackoakStd {
+    font-family: 'BlackoakStd';
+    font-size: 60px;
+}
+.Gabriola {
+    font-family: 'Gabriola';
+    font-size: 60px;
+}

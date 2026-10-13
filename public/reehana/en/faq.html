@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="REEHANA">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+	<meta name="description" content="REEHANA">
+	<link rel="manifest" href="manifest.json">
+
+	<title>REEHANA</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../css/fontawesome.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/cloudzoom.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/jquery-ui.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body>
+<div id="preloader">
+	<img src="../img/loader.gif">Loading...
+</div>
+<div class="wrapper general-page">
+	<section class="menu">
+		<nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg navbar-toggleable-md scrolling-navbar double-nav">
+			<div class="navbar-collapse container-fluid">
+				<button class="navbar-toggler" type="button">
+					<div class="hamburger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</button>
+				<div class="navbar-brand">
+					<span class="navbar-caption-wrap logo">
+						<a href="index.html">
+							<span class="logoR"></span>
+							<span class="E">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+							<span class="logoH"></span>
+							<span class="logoA"></span>
+							<span class="logoN"></span>
+							<span class="logoA"></span>
+						</a>
+					</span>
+				</div>
+				<div class="gap"></div>
+				<div class="right-menu">
+					<ul class="quick-menu">
+						<li class="nav-icon dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+								<i class="icon-cart"></i>
+								<em>2</em>
+							</a>
+							<div class="cart dropdown-menu" id="cartd">
+								<div class="cart-bag">
+									<div class="title">
+										<h4>Cart Summary</h4>
+									</div>
+									<div class="fancy">
+										<ul>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-01.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-02.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-03.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-01.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-02.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="prod-img">
+													<a href="detail.html">
+														<img src="../img/item-03.png">
+													</a>
+												</div>
+												<div class="prod-detail">
+													<div class="v-flex">
+														<span class="prod-title">Alexandra Flat Sheet</span>
+														<span class="prod-price">180.000 KD</span>
+														<span class="prod-qty">Qty: <span>1</span></span>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="actions h-flex">
+										<button class="btn btn-secondary">View Cart</button>
+										<button class="btn btn-primary">Place Order</button>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="nav-icon sm-hidden"><a href="profile-wishlist.html"><i class="icon-wishlist"></i></a></li>
+						<li class="nav-icon dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+								<i class="icon-user"></i>
+								<i class="icon-down"></i>
+							</a>
+							<div id="user-menu" class="user-menu dropdown-menu">
+								<ul>
+									<li><a href="profile-orders.html">My Orders</a></li>
+									<li><a href="profile-wishlist.html">My Wishlist</a></li>
+									<li class="separator"></li>
+									<li><a href="profile-addresses.html">My Addresses</a></li>
+									<li><a href="profile-account.html">My Profile</a></li>
+									<li><a href="profile-change-password.html">Change Password</a></li>
+									<li><a href="signin.html">Logout</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-icon">
+							<select class="select-currency">
+								<option>KWD</option>
+								<option>SAR</option>
+								<option>QAD</option>
+							</select>
+						</li>
+					</ul>
+					<div class="toast" id="itemAdd">
+						<div class="h-flex">
+							<img src="../img/item-01.png">
+							<span>Added to Cart</span>
+						</div>
+					</div>
+					<div class="toast" id="itemRem">
+						<div class="h-flex">
+							<img src="../img/item-01.png">
+							<span>Removed from Cart</span>
+						</div>
+					</div>
+					<div class="toast" id="favAdd">
+						<div class="h-flex">
+							<img src="../img/item-01.png">
+							<span>Added to Wishlist</span>
+						</div>
+					</div>
+					<div class="toast" id="favRem">
+						<div class="h-flex">
+							<img src="../img/item-01.png">
+							<span>Removed from Wishlist</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<section class="breadcrumbs">
+		<div class="container">
+			<span><a href="index.html">Home</a></span>
+			<span class="sep"></span>
+			<span><a href="faq.html">FAQs</a></span>
+		</div>
+	</section>
+    <section class="general-info">
+		<div class="grey-background">
+			<div class="white-background">
+				<h2>FAQ</h2>
+				<div class="faq-section">
+					<div class="question">
+						<h5>1) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>2) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>3) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>4 working days.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>4) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>5) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>6) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>7) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>8) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>9) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>10) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>11) What is the time taken for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+					<div class="question">
+						<h5>12) What are the charges for delivery?</h5>
+						<div class="answer">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker It was popularised in the 1960s with the release of Letraset sheets including versions of Lorem Ipsum.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </section>
+	<div class="footer">
+		<div class="footer-container">
+			<div class="line line1"></div>
+			<div class="line line2"></div>
+			<div class="line line3"></div>
+			<div class="footer-logo logo">
+				<span class="logoR"></span>
+				<span class="E">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+				<span class="logoH"></span>
+				<span class="logoA"></span>
+				<span class="logoN"></span>
+				<span class="logoA"></span>
+			</div>
+			<div class="links">
+				<ul class="footer-links">
+					<li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="shipping.html">Shipping</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="contact.html">Contact Us</a></li>
+				</ul>
+			</div>
+			<div class="social-links">
+				<ul class="share">
+					<li><a href="http://instagram.com"><span class="instagram"></span></a></li>
+					<li><a href="https://wa.me/96599621782"><span class="whatsapp"></span></a></li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<span>&copy;2021 Reehana</span>
+				<!-- <span class="gap"></span>
+				<span>Designed &amp; Developed by <a href="http://www.uno-digital.com/" target="_blank">UNO Digital</a></span> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="menu-handheld" class="fancy">
+	<div class="menu-container">
+		<div class="search" id="search">
+			<div class="searchContainer">
+				<form method="POST">
+					<input type="submit" value="">
+					<input type="text" placeholder="Search">
+					<span id="clear" class="hide"><i class="icon-close"></i></span>
+				</form>
+			</div>
+		</div>
+		<ul class="navbar-nav nav-dropdown nav-right quick-menu" data-app-modern-menu="true">
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+					<span>Collections</span>
+					<i class="icon-up expanded"></i>
+					<i class="icon-down collapsed"></i>
+				</a>
+				<div class="submenu dropdown-menu">
+					<div class="v-flex">
+						<ul>
+							<li class="dropdown">
+								<a href="#" class="active dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+									<span>BED</span>
+									<i class="icon-plus collapsed"></i>
+									<i class="icon-minus expanded"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="active"><a href="products.html">Duvet Covers</a></li>
+									<li><a href="products.html">Sheet &amp; Pillow cases</a></li>
+									<li><a href="products.html">Quilts &amp; Coverlets</a></li>
+									<li><a href="products.html">All</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+									<span>Bath</span>
+									<i class="icon-plus collapsed"></i>
+									<i class="icon-minus expanded"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="products.html">Bath Towels</a></li>
+									<li><a href="products.html">Beach Towels</a></li>
+									<li><a href="products.html">Bath Rugs</a></li>
+									<li><a href="products.html">All</a></li>
+								</ul>
+							</li>
+							<li><a href="products.html"><span>Accessories</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" aria-expanded="false">
+					<span>Brands</span>
+					<i class="icon-up expanded"></i>
+					<i class="icon-down collapsed"></i>
+				</a>
+				<div class="submenu dropdown-menu">
+					<div class="v-flex">
+						<ul>
+							<li><a href="products.html"><span>Goldie</span></a></li>
+							<li><a href="products.html"><span>Stripen</span></a></li>
+							<li><a href="products.html"><span>Glamor</span></a></li>
+							<li><a href="products.html">All</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link link" href="products.html"><span>Sale</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link link" href="products.html"><span>New Arrivals</span></a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div id="sidenav-overlay"></div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/smooth-scroll.js"></script>
+<script src="../js/nav-dropdown.js"></script>
+<script src="../js/navbar-dropdown.js"></script>
+<script src="../js/jquery.touch-swipe.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/slick.min.js"></script>
+<script src="../js/custom.js"></script>
+
+</body>
+</html>

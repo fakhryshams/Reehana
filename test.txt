@@ -1,0 +1,4 @@
+cPanel public_html
+
+
+php artisan migrate --path=database/migrations/2026_09_08_000002_create_temporary_order_details_table.php

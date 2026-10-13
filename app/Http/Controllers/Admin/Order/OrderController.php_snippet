@@ -1,0 +1,93 @@
+
+    public function updateItemDetail(Request $request)
+    {
+        $request->validate([
+            'order_detail_id' => 'required|exists:orders_detail,id',
+            'product_name'    => 'required|string|max:191',
+            'product_price'   => 'required|numeric|min:0',
+            'quantity'        => 'required|numeric|min:1',
+            'custom_attributes' => 'nullable|array'
+        ]);
+
+        $orderDetailItem = OrderDetail::find($request->order_detail_id);
+        $order = WebOrder::find($orderDetailItem->order_id);
+
+        if ($order->order_status == config('custom_web.Pending')) {
+             return back()->with('error', 'Cannot update items when order status is Pending.');
+        }
+
+        // Update Item
+        $orderDetailItem->product_name = $request->product_name;
+        $orderDetailItem->product_price = $request->product_price;
+        $orderDetailItem->quantity = $request->quantity;
+        $orderDetailItem->total_price = $request->product_price * $request->quantity;
+
+        // Custom Attributes - remove any empty keys
+        $attributes = [];
+        if ($request->has('custom_attributes')) {
+            foreach ($request->custom_attributes as $key => $value) {
+                if (!empty($key) && !empty($value)) {
+                    $attributes[$key] = $value;
+                }
+            }
+        }
+        $orderDetailItem->custom_attributes = !empty($attributes) ? json_encode($attributes) : null;
+        $orderDetailItem->save();
+
+        // Recalculate Order Totals
+        // Re-fetch all items to sum up
+        $allOrderItems = OrderDetail::where('order_id', $order->id)
+                                    ->where('is_active', 1)
+                                    ->get();
+
+        $subtotal = $allOrderItems->sum('total_price');
+
+        // Gift wrap addition if exists (logic from view)
+        if ($order->gift_wrap) {
+            $subtotal += $order->gift_wrap;
+        }
+
+        // Calculate Discount
+        $discountAmount = 0;
+        if ($order->discount_type === 'percentage') {
+             // Handle if discount_value (percentage) exists
+             // Note: In DB column 'discount_value' stores the actual discount amount or value depending on context?
+             // In updateDiscount:
+             // 'discount_value' => $request->discount_value (the input value, e.g. 10 for 10%)
+             // 'discount' => calculated amount.
+             // But existing code uses $order->discount_per ?
+             // In view: $orderDetail->discount_per used for percentage.
+             // In updateDiscount: 'discount_value' update column.
+             // Let's rely on 'discount_type' and 'discount_value' columns which seem to be the source of truth after update.
+
+             // However, checks in view show: $orderDetail->discount_per.
+             // The DB schema might have both.
+             // Let's assume 'discount_value' column holds the percentage if type is 'percentage', or flat amount if 'flat'.
+             // updateDiscount updates 'discount_value'.
+
+             if ($order->discount_value) {
+                 $discountAmount = ($subtotal * $order->discount_value) / 100;
+             }
+        } elseif ($order->discount_type === 'flat') {
+             $discountAmount = $order->discount_value;
+             // Cap at subtotal
+             $discountAmount = min($discountAmount, $subtotal);
+        } else {
+             // Fallback to existing 'discount' column if no type set/modification done
+             $discountAmount = $order->discount;
+        }
+
+        // Update Order
+        $deliveryPrice = $order->delivery_price;
+        $pending_amount = $subtotal + $deliveryPrice - $discountAmount - $order->paid_amount;
+        $order_total    = $subtotal + $deliveryPrice - $discountAmount;
+
+        $order->update([
+            'order_price'    => $subtotal, // Subtotal usually stored in order_price? yes, see updateDiscount (implies order_price is subtotal)
+            'discount'       => $discountAmount,
+            'pending_amount' => $pending_amount,
+            'order_total'    => $order_total
+        ]);
+
+        return back()->with('success', 'Item updated successfully.');
+    }

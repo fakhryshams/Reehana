@@ -1,0 +1,138 @@
+FedEx Integration Technical Document
+====================================
+
+1. Integration Overview
+-----------------------
+The FedEx integration is primarily handled by the `App\Services\FedExService` class, which acts as a wrapper for the FedEx REST APIs. This service is utilized by:
+- Checkout Controller: For calculating shipping rates and generating labels upon payment.
+- Shipping Service: To abstract the rate calculation logic.
+- Order Controller (Admin): For manual pickup requests and trade document uploads.
+- Console Command: For automated tracking updates via `fedex:update-pickup-status`.
+
+2. Configuration & Credentials
+------------------------------
+File: `config/services.php`
+Environment Variables:
+- `FEDEX_CLIENT_ID` (Key)
+- `FEDEX_CLIENT_SECRET` (Secret)
+- `FEDEX_ACCOUNT_NUMBER`
+- `FEDEX_BASE_URL` (e.g., `https://apis-sandbox.fedex.com`)
+- `FEDEX_DOCUMENT_UPLOAD_BASE_URL`
+- `FEDEX_BASIC_INTEGRATED_VISIBILITY_CLIENT_CLIENT_ID` (Separate credential for Tracking)
+- `FEDEX_BASIC_INTEGRATED_VISIBILITY_CLIENT_SECRET` (Separate credential for Tracking)
+
+3. Detailed Functional Flows
+----------------------------
+
+3.1 Authentication Flow
+   - Function: `getAccessToken()` in `FedExService.php`
+   - Trigger: Called automatically before any API request (Rates, Ship, Pickup).
+   - Logic:
+     1. Checks `Cache::has('fedex_access_token')`.
+     2. If cached, returns the token.
+     3. If not, performs a `POST` request to `/oauth/token` with `client_credentials`.
+     4. Caches the new token for the duration of `expires_in` (minus distinct buffer).
+   - Static Function Variables:
+     - `grant_type`: `'client_credentials'`
+   - Tracking Auth: Uses a separate method `getBasicIntegratedVisibilityAccessToken()` which follows the same logic but uses distinct "Basic Integrated Visibility" credentials required specifically for the Tracking API.
+
+3.2 Rate Calculation Flow
+   - Entry Point: `ShippingService::calculateFedexShipping` called from `CheckoutController` (and `CartController`).
+   - Service Function: `FedExService::getRates($recipientAddress, $packages)`
+   - Logic:
+     1. Data Prep: Constructs `requestedPackageLineItems` from the cart. Defaults weight to `0.5` kg if missing, default dimensions `10x10x10`.
+     2. Shipper Address: Retrieves warehouse address via `getShipperAddress`.
+     3. Recipient Address: Maps user's checkout address.
+     4. Customs: If `shipperCountry !== recipientCountry`, calculates `customsClearanceDetail` including duties and commodities.
+     5. API Call: Sends Payload to `/rate/v1/rates/quotes`.
+   - Static Variables Used:
+     - `pickupType`: `'USE_SCHEDULED_PICKUP'`
+     - `packagingType`: `'YOUR_PACKAGING'`
+     - `rateSortOrder`: `'SERVICENAMETRADITIONAL'`
+     - `currency`: Defaults to `'KWD'` or derived from Country.
+
+3.3 Shipment Generation Flow
+   - Entry Point: `CheckoutController::paymentSuccess`
+   - Service Function: `FedExService::createShipment($shipmentDetails)`
+   - Logic:
+     1. Triggered only after successful payment verification.
+     2. Shipper/Recipient: Re-uses `getShipperAddress` and maps Customer address.
+     3. Commodities: Iterates `OrderDetail` items to build the `commodities` array (required for international).
+     4. API Call: `POST` to `/ship/v1/shipments`.
+     5. Post-Processing:
+        - Extracts `trackingNumber` and `labelUrl` (PDF) from response.
+        - Updates `orders` table with tracking info.
+   - Static Variables Used:
+     - `serviceType`: `'INTERNATIONAL_PRIORITY'` (Hardcoded).
+     - `pickupType`: `'USE_SCHEDULED_PICKUP'`
+     - `paymentType`: `'SENDER'` (DDU - Deliver Duty Unpaid, usually).
+     - `labelStockType`: `'PAPER_85X11_TOP_HALF_LABEL'`
+     - `imageType`: `'PDF'`
+
+3.4 Pickup Request Flow (Admin)
+   - Entry Point: `OrderController::requestPickup`
+   - Service Function: `FedExService::createPickupRequest($pickupDetails)`
+   - Logic:
+     1. Uses `getShipperAddress()` to define the pickup location (Warehouse).
+     2. Sets `readyDateTimestamp` to `now() + 2 hours`.
+     3. API Call: `POST` to `/pickup/v1/pickups`.
+     4. Updates order with `pickup_confirmation_code`.
+   - Static Variables Used:
+     - `carrierCode`: `'FDXE'` (Express)
+     - `stateOrProvinceCode`: `'KU'` (Hardcoded requirement for Kuwait in some FedEx APIs).
+     - `customerCloseTime`: `'18:00:00'`
+
+3.5 Tracking Update Flow (Automated)
+   - Entry Point: Console Command `fedex:update-pickup-status` (Scheduled Task).
+   - Service Function: `FedExService::trackStatus($trackingNumber)`
+   - Logic:
+     1. Selects orders where `tracking_number != null` and status is not final.
+     2. API Call: `POST` to `/track/v1/trackingnumbers`.
+     3. Parses `latestStatusDetail` code (e.g., `PU`, `DL`, `IT`).
+     4. Updates Database:
+        - `PU` (Picked Up) -> Sets Order Status to **Shipped**.
+        - `DL` (Delivered) -> Sets Order Status to **Delivered**.
+        - `CA` (Cancelled) -> Sets Order Status to **Cancelled**.
+        - `RS` (Returned) -> Sets Order Status to **Returned**.
+   - Static Variables Used:
+     - `includeDetailedScans`: `true`
+
+3.6 Trade Document Upload (Admin)
+   - Entry Point: `OrderController::uploadDocuments`
+   - Service Function: `FedExService::uploadTradeDocuments($files, $metaData)`
+   - Logic:
+     1. Uploads post-shipment documents (like commercial invoices) to link with the shipment.
+     2. Requires `trackingNumber` to associate the document.
+   - Static Variables Used:
+     - `workflowName`: `'ETDPostShipment'`
+     - `carrierCode`: `'FDXE'`
+
+4. Variable Identification
+--------------------------
+
+4.1 Static Variables (Hardcoded)
+These variables are constant across requests unless the code is modified:
+- `serviceType`: `'INTERNATIONAL_PRIORITY'` (in `createShipment`)
+- `pickupType`: `'USE_SCHEDULED_PICKUP'` (in `createShipment`, `getRates`)
+- `packagingType`: `'YOUR_PACKAGING'` (in `createShipment`, `getRates`)
+- `carrierCode`: `'FDXE'` (in `createPickupRequest`)
+- `Shipper City`: `'Salmiya'` (in `FedExService::getShipperAddress`)
+- `Shipper Country`: `'KW'` (in `FedExService::getShipperAddress`)
+- `Weight Unit`: `'KG'` (in `getRates`, `createShipment`)
+- `Dimension Unit`: `'CM'` (in `getRates`, `createShipment`)
+
+4.2 Temporary Variables
+These variables hold transient data during execution:
+- `$token`: OAuth bearer token retrieved/cached from FedEx.
+- `$packages`: Array of package dimensions/weights derived from `ShoppingCart`.
+- `$commodities`: Detailed array of items (desc, price, weight, customs value) for international clearance.
+- `$payload`: The final JSON structure sent to FedEx APIs (differs per endpoint).
+- `$customsClearanceDetail`: Object containing duty payment and commodity info, generated only if International.
+
+5. Identified Anomalies / Notes
+-------------------------------
+- Shipper Address: In `FedExService::getShipperAddress`, variables `$city` and `$countryCode` are calculated from the database but currently overwritten in the return statement by hardcoded values (`"Salmiya"`, `"KW"`).
+- Pickup Type: The shipment payload uses `'USE_SCHEDULED_PICKUP'` although a separate pickup request flow exists. This might need adjustment if scheduled pickups are the primary method.
+
+
+- Email send on all status change

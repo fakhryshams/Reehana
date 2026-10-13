@@ -1,0 +1,48 @@
+Technical Summary: Physical Store + Sales, Payments, Shipping & Custom Orders
+
+Scope
+This implementation delivers physical store management with mapped salesperson accounts, payment link handling (accept/reject), customized order quotations, FedEx shipping/rate calculation, automated tracking, and delivery status updates with email notifications.
+
+Physical Store Management (CRUD)
+- Stores are updated and can be activated/deactivated.
+- Deactivating a store automatically deactivates all linked store users in both physical_store_users and users tables.
+
+Salesperson Accounts
+- Salespersons are created as website users with user_type = physical_store_user and login_type = website.
+- Accounts are stored in both users and physical_store_users and linked by user_id.
+- Credentials are emailed at creation.
+- Admin can enable/disable salespersons; enabling is blocked if their store is inactive.
+- Salesperson list supports filtering by physical store.
+- Current behavior: new salespersons are assigned to the most recently created physical store (physical_store_id set to the latest store ID in UserController::store/update).
+
+Custom Orders & Quotations
+- Custom orders are stored with order_type = custom and custom_order_type set to quotation or purchase_order.
+- Quotation conversion creates a new purchase order and copies order items.
+- Custom order pricing supports shipping, discounts, and advance (token) payments; pending_amount and paid_amount are tracked.
+
+Payment Links: Generate, Accept, Reject - Physical Store User Login
+- Payment links are stored in payment_links with status tracking (pending, paid, rejected) and metadata such as payment_request_id, is_advance_payment, and email audit fields.
+- Admin can generate payment links for customized orders, send emails, and record manual payments.
+- A public payment review page is available for both regular and customized orders; customers can accept (pay) or reject the link.
+- Rejecting a payment link updates the link status to rejected, cancels the order, and notifies the staff user who generated the link.
+
+Token/Partial vs Full Payment
+- Purchase orders support advance (token) payments; the system tracks paid_amount and pending_amount.
+- Payment link consumption updates balances and marks advance payments as completed when applicable.
+- Manual payment logs are supported for customized purchase orders.
+
+FedEx Shipping & Product-Wise Charges
+- Shipping rates are fetched via FedEx with a fallback to local weight-based shipping.
+- The total shipping cost is split per product by weight and stored on cart items for display.
+- Product-level shipping is used in cart and checkout to show item-wise delivery charges.
+
+Shipment Creation, Tracking, Status Automation
+- Shipments are created via FedEx after successful payment, storing tracking number, service type, label URL, and response payload on the order.
+- A scheduled command polls FedEx tracking APIs, updates order status based on carrier codes, logs status history, and sends status update emails.
+
+Admin Visibility
+- Admin order detail displays order status history, including FedEx status code mapping and update type.
+
+Invoices
+- Admin can print invoices for regular and customized orders.
+- Custom order invoice email template is available.
