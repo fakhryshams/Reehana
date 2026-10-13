@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+    role="img" 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="1000mm"
+    height="1000mm"
+    viewBox="0 0 1000 1000"
+    style="max-width:1.6em; height: auto;">
+    
+    <path 
+        id="path" 
+        style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;"
+        d=" M 512 150C 512 150 512 487 512 487C 512 487 850 487 850 487C 850 487 850 512 850 512C 850 512 512 512 512 512C 512 512 512 850 512 850C 512 850 487 850 487 850C 487 850 487 512 487 512C 487 512 150 512 150 512C 150 512 150 487 150 487C 150 487 487 487 487 487C 487 487 487 150 487 150C 487 150 512 150 512 150"
+        transform="">
+    </path>    
+</svg>

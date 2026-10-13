@@ -1,0 +1,170 @@
+[
+    {
+        "fonts" : [
+            {
+                "fontId": 1,
+                "preview": "no",
+                "categories": ["all", "towels", "beds", "sham", "sheet", "covers", "mats" ,"black"],
+                "folderName": "Rounded",
+                "variants": "yes",
+                "defaultImage": "rounded.svg",
+                "hasBorder": "yes"
+            }, {
+                "fontId": 2,
+                "preview": "yes",
+                "categories": ["all", "towels", "beds", "sham", "sheet", "covers", "mats"],
+                "folderName": "Alexbrush",
+                "variants": "no",
+                "defaultImage": "alexbrush.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 3,
+                "preview": "yes",
+                "categories": ["all", "towels", "beds", "covers", "mats"],
+                "folderName": "Anderella",
+                "variants": "no",
+                "defaultImage": "anderella.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 4,
+                "preview": "yes",
+                "categories": ["towels", "sheet", "covers", "mats"],
+                "folderName": "Bodoni",
+                "variants": "no",
+                "defaultImage": "bodoni.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 5,
+                "preview": "yes",
+                "categories": ["towels", "beds", "covers", "sham", "quilt", "sheet", "mats"],
+                "folderName": "Brock-script",
+                "variants": "no",
+                "defaultImage": "brockscript.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 6,
+                "position": "center",
+                "preview": "yes",
+                "categories": ["towels", "beds", "covers", "mats"],
+                "folderName": "Calgary",
+                "variants": "no",
+                "defaultImage": "calgary.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 7,
+                "position": "right",
+                "preview": "yes",
+                "categories": ["towels", "quilt", "covers", "sheet"],
+                "folderName": "Emilio",
+                "variants": "no",
+                "defaultImage": "emilio.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 8,
+                "preview": "yes",
+                "categories": ["towels", "beds", "covers", "sham", "sheet", "mats"],
+                "folderName": "Great-vibes",
+                "variants": "no",
+                "defaultImage": "greatvibes.svg",
+                "hasBorder": "no"
+            }, {
+                "fontId": 9,
+                "preview": "yes",
+                "categories": ["towels", "beds", "sham", "sheet", "covers", "mats"],
+                "folderName": "Nexa",
+                "variants": "no",
+                "defaultImage": "nexa.svg",
+                "hasBorder": "no"
+            }
+        ]
+    }, {
+        "colors": [
+            {
+                "colorName": "Black",
+                "hexCode": "#000000"
+            }, {
+                "colorName": "Red",
+                "hexCode": "#8e0000"
+            }, {
+                "colorName": "Prussian Blue",
+                "hexCode": "#204d70"
+            }, {
+                "colorName": "Pool",
+                "hexCode": "#287990"
+            }, {
+                "colorName": "Yellow",
+                "hexCode": "#ffc40e"
+            }, {
+                "colorName": "Green",
+                "hexCode": "#1d7533"
+            }, {
+                "colorName": "Coral",
+                "hexCode": "#ff4141"
+            }, {
+                "colorName": "Grey",
+                "hexCode": "#808080"
+            }, {
+                "colorName": "Violet",
+                "hexCode": "#682fa3"
+            }
+        ]
+    }, {
+        "placement": [
+            {
+                "placementId": "p01",
+                "placementImage": "placement1.png",
+                "categories": ["towels", "beds", "sham", "sheet", "covers", "mats"],
+                "placementSize": "3",
+                "placementDesc": "Centered at the top"
+            }, {
+                "placementId": "p02",
+                "placementImage": "placement2.png",
+                "categories": ["towels", "beds", "sham", "sheet", "covers", "mats"],
+                "placementSize": "6",
+                "placementDesc": "Centered along height and width"
+            }, {
+                "placementId": "p03",
+                "placementImage": "placement3.png",
+                "categories": ["towels", "beds", "sham", "sheet", "covers", "mats"],
+                "placementSize": "8",
+                "placementDesc": "Centered at the bottom"
+            }, {
+                "placementId": "p04",
+                "placementImage": "placement1.png",
+                "categories": ["towels", "beds"],
+                "placementSize": "9",
+                "placementDesc": "Top Left"
+            }, {
+                "placementId": "p05",
+                "placementImage": "placement2.png",
+                "categories": ["covers", "mats"],
+                "placementSize": "10",
+                "placementDesc": "Top Right"
+            }, {
+                "placementId": "p06",
+                "placementImage": "placement3.png",
+                "categories": ["covers", "mats"],
+                "placementSize": "12",
+                "placementDesc": "Center Right"
+            }, {
+                "placementId": "p07",
+                "placementImage": "placement1.png",
+                "categories": ["towels", "beds", "sham", "sheet", "covers", "mats"],
+                "placementSize": "15",
+                "placementDesc": "Center Left"
+            }, {
+                "placementId": "p08",
+                "placementImage": "placement2.png",
+                "categories": ["covers", "sheets"],
+                "placementSize": "4",
+                "placementDesc": "Bottom Left"
+            }, {
+                "placementId": "p09",
+                "placementImage": "placement3.png",
+                "categories": ["covers", "sheets"],
+                "placementSize": "7",
+                "placementDesc": "Bottom Right"
+            }
+        ]
+    }
+]
